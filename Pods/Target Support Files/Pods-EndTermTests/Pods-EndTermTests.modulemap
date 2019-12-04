@@ -1,0 +1,6 @@
+framework module Pods_EndTermTests {
+  umbrella header "Pods-EndTermTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
