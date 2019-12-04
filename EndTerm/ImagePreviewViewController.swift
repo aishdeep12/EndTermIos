@@ -11,8 +11,15 @@ import UIKit
 class ImagePreviewViewController: UIViewController {
     
     
-
+    @IBOutlet weak var name: UILabel!
+    
+    @IBOutlet weak var shortBio: UILabel!
     @IBOutlet weak var CircularImage: UIImageView!
+    
+    var names: String?
+      var bio: String?
+    var capturedImage: UIImage?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,6 +27,11 @@ class ImagePreviewViewController: UIViewController {
         
         CircularImage.layer.masksToBounds = true
         CircularImage.layer.cornerRadius = CircularImage.bounds.width / 2
+        CircularImage.image = capturedImage
+        
+        shortBio.text = bio;
+        name.text = names;
+        CircularImage.image = capturedImage;
     }
     
 

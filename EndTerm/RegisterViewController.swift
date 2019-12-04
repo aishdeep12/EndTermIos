@@ -16,6 +16,8 @@ class RegisterViewController: UIViewController {
       var cameraPreviewLayer: AVCaptureVideoPreviewLayer?
       var cameraCaptureOutput: AVCapturePhotoOutput?
     
+    @IBOutlet weak var shortBio: UITextField!
+    @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var circularimage: UIImageView!
@@ -63,6 +65,19 @@ class RegisterViewController: UIViewController {
     }
     
     
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if segue.identifier == "PreviewImage" {
+    //
+                
+                let secondViewController = segue.destination as! ImagePreviewViewController
+                
+                secondViewController.names = userName.text!
+                
+                secondViewController.bio = shortBio.text!
+            }
+        }
+
+    
         
     
     
@@ -92,63 +107,63 @@ class RegisterViewController: UIViewController {
     
     
     
-//    func displayCapturedPhoto(capturedPhoto: UIImage){
-//
-//           let imagePreviewViewController = storyboard?.instantiateViewController(withIdentifier: "ImagePreviewViewController") as! ImagePreviewViewController
-//
-//           ImagePreviewViewControlle.capturedImage = capturedPhoto
-//           navigationController?.pushViewController(imagePreviewViewController, animated: true)
-//       }
-//
-//       func initializeCaptureSession(){
-//           session.sessionPreset = AVCaptureSession.Preset.high
-//           camera = AVCaptureDevice.default(for: AVMediaType.video)
-//           do {
-//               let cameraCaptureInput = try AVCaptureDeviceInput(device: camera!)
-//               cameraCaptureOutput = AVCapturePhotoOutput()
-//               session.addInput(cameraCaptureInput)
-//               session.addOutput(cameraCaptureOutput!)
-//           }catch{
-//               print(error.localizedDescription)
-//           }
-//           cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: session)
-//           cameraPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
-//           cameraPreviewLayer?.frame = view.bounds
-//           cameraPreviewLayer?.connection?.videoOrientation = AVCaptureVideoOrientation.portrait
-//
-//           view.layer.insertSublayer(cameraPreviewLayer!, at: 0)
-//           session.startRunning()
-//       }
-//
-//
-//    @IBAction func takePicture(_ sender: Any) {
-//
-//        takePicture()
-//    }
-//
-//
-//     func takePicture(){
-//            let settings = AVCapturePhotoSettings()
-//                   settings.flashMode = .auto
-//                   cameraCaptureOutput?.capturePhoto(with: settings, delegate: self)
-//        }
-//
-//    }
-//    extension ViewController : AVCapturePhotoCaptureDelegate{
-//        func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?){
-//
-//            if let unwrappedError = error{
-//                print(unwrappedError.localizedDescription)
-//            }else{
-//
-//                if let sampleBuffer = photoSampleBuffer,
-//
-//                 let dataImage = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: sampleBuffer, previewPhotoSampleBuffer: photoSampleBuffer) {
-//                if let finalImage = UIImage(data: dataImage){
-//                    displayCapturedPhoto(capturedPhoto: finalImage)
-//                }
-//            }
-//            }
-//        }
+    func displayCapturedPhoto(capturedPhoto: UIImage){
+
+           let imagePreviewViewController = storyboard?.instantiateViewController(withIdentifier: "PreviewImage") as! ImagePreviewViewController
+
+        imagePreviewViewController.capturedImage = capturedPhoto
+           navigationController?.pushViewController(imagePreviewViewController, animated: true)
+       }
+
+       func initializeCaptureSession(){
+           session.sessionPreset = AVCaptureSession.Preset.high
+           camera = AVCaptureDevice.default(for: AVMediaType.video)
+           do {
+               let cameraCaptureInput = try AVCaptureDeviceInput(device: camera!)
+               cameraCaptureOutput = AVCapturePhotoOutput()
+               session.addInput(cameraCaptureInput)
+               session.addOutput(cameraCaptureOutput!)
+           }catch{
+               print(error.localizedDescription)
+           }
+           cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: session)
+           cameraPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
+           cameraPreviewLayer?.frame = view.bounds
+           cameraPreviewLayer?.connection?.videoOrientation = AVCaptureVideoOrientation.portrait
+
+           view.layer.insertSublayer(cameraPreviewLayer!, at: 0)
+           session.startRunning()
+       }
+
+
+    @IBAction func takePicture(_ sender: Any) {
+
+        takePicture()
+    }
+
+
+     func takePicture(){
+            let settings = AVCapturePhotoSettings()
+                   settings.flashMode = .auto
+                   cameraCaptureOutput?.capturePhoto(with: settings, delegate: self)
+        }
+
+    }
+    extension RegisterViewController : AVCapturePhotoCaptureDelegate{
+        func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?){
+
+            if let unwrappedError = error{
+                print(unwrappedError.localizedDescription)
+            }else{
+
+                if let sampleBuffer = photoSampleBuffer,
+
+                 let dataImage = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: sampleBuffer, previewPhotoSampleBuffer: photoSampleBuffer) {
+                if let finalImage = UIImage(data: dataImage){
+                    displayCapturedPhoto(capturedPhoto: finalImage)
+                }
+            }
+            }
+        }
 
 }

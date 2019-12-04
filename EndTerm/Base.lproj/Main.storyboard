@@ -198,6 +198,8 @@
                         <outlet property="circularimage" destination="7eN-07-qZ7" id="2y7-Ki-ur4"/>
                         <outlet property="email" destination="4BJ-lY-IEF" id="czx-ff-1qB"/>
                         <outlet property="password" destination="SUJ-HT-H8E" id="Gk1-Ei-2i0"/>
+                        <outlet property="shortBio" destination="7ze-wb-dsI" id="i6C-en-pw1"/>
+                        <outlet property="userName" destination="zTU-RP-HfF" id="QcI-u2-cOV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bvu-WB-Ydd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -218,14 +220,7 @@
                                 <color key="backgroundColor" red="0.4349289536" green="0.4425882995" blue="0.47577035429999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HnC-8D-kUm">
-                                <rect key="frame" x="180" y="300" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CbR-AW-II6">
-                                <rect key="frame" x="180" y="338" width="42" height="21"/>
+                                <rect key="frame" x="182" y="296" width="135" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -235,12 +230,21 @@
                                 <rect key="frame" x="140" y="148" width="135" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CbR-AW-II6">
+                                <rect key="frame" x="182" y="325" width="135" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="3qU-jR-T7j"/>
                     </view>
                     <connections>
                         <outlet property="CircularImage" destination="xab-v1-4k9" id="mND-fG-gdW"/>
+                        <outlet property="name" destination="HnC-8D-kUm" id="pts-Ya-tAa"/>
+                        <outlet property="shortBio" destination="CbR-AW-II6" id="Pue-Xx-krE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oZM-hb-fUh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
